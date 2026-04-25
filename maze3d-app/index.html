@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D迷路設計図ジェネレーター</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>3D迷路設計図ジェネレーター</h1>
+      <p class="description">
+        幅・奥行き・高さを指定すると、ブロック配置向けの3次元迷路設計図を生成します。
+      </p>
+
+      <section class="controls">
+        <label>
+          幅 (X)
+          <input id="width" type="number" min="5" max="61" step="2" value="15" />
+        </label>
+        <label>
+          奥行き (Y)
+          <input id="depth" type="number" min="5" max="61" step="2" value="15" />
+        </label>
+        <label>
+          高さ (Z)
+          <input id="height" type="number" min="3" max="31" step="2" value="7" />
+        </label>
+        <button id="generateBtn">迷路を生成</button>
+      </section>
+
+      <section class="legend">
+        <span><strong>#</strong> = 壁ブロック</span>
+        <span><strong>.</strong> = 通路</span>
+        <span><strong>S</strong> = スタート</span>
+        <span><strong>G</strong> = ゴール</span>
+      </section>
+
+      <section>
+        <h2>層ごとの設計図 (上が Z=0 層)</h2>
+        <div id="layers" class="layers"></div>
+      </section>
+
+      <section>
+        <h2>JSONエクスポート</h2>
+        <textarea id="jsonOutput" readonly></textarea>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
